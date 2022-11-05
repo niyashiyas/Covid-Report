@@ -1,30 +1,31 @@
-function updateMap(){
+function updateMap() {
+    console.log("Updating map with realtime data")
     fetch("/data.json")
         .then(response => response.json())
         .then(rsp => {
-
-        rsp.data.forEach(element => {
+            // console.log(rsp.data)
+            rsp.data.forEach(element => {
                 latitude = element.latitude;
                 longitude = element.longitude;
 
-            cases = element.infected;
-            if (cases>300){
-                color = "rgb(255, 0, 0)";
-                // innerHeight = 100px;
-            }else{
-                color = `rgb(${cases}, 0, 0)`;
-            }
+                cases = element.infected;
+                if (cases>255){
+                    color = "rgb(255, 0, 0)";
+                }
 
-        //To Mark on the map
-        const marker =  new mapboxgl.Marker(
-        //     {
-        //     draggable: false,
-        //     color: color
-        // }
-        ).setLngLat([longitude, latitude])
-        .addTo(map); 
-    });
-})
+                else{
+                    color = `rgb(${cases}, 0, 0)`;
+                }
+
+                // Mark on the map
+                new mapboxgl.Marker({
+                    draggable: false,
+                    color: color
+                }).setLngLat([longitude, latitude])
+                .addTo(map); 
+            });
+        })
 }
 
-updateMap();
+let interval = 20000;
+setInterval( updateMap, interval); 
