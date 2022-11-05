@@ -8,18 +8,20 @@ function updateMap(){
                 longitude = element.longitude;
 
             cases = element.infected;
-//             if (cases>300){
-//                 color = "rgb(255, 0, 0)";
-//                 // innerHeight = 100px;
-//             }else{
-//                 color = `rgb(${cases}, 0, 0)`;
-//             }
+            if (cases>300){
+                color = "rgb(255, 0, 0)";
+                // innerHeight = 100px;
+            }else{
+                color = `rgb(${cases}, 0, 0)`;
+            }
 
         //To Mark on the map
-        new mapboxgl.Marker({
-            draggable: false,
-//             color: color
-        }).setLngLat([longitude, latitude])
+        const marker =  new mapboxgl.Marker(
+        //     {
+        //     draggable: false,
+        //     color: color
+        // }
+        ).setLngLat([longitude, latitude])
         .addTo(map); 
     });
 })
