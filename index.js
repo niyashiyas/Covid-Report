@@ -16,14 +16,15 @@ function updateMap(){
             }
 
         //To Mark on the map
-        new mapboxgl.Marker({
-            draggable: false,
-            color: color
-        }).setLngLat([longitude, latitude])
+        const marker =  new mapboxgl.Marker(
+        //     {
+        //     draggable: false,
+        //     color: color
+        // }
+        ).setLngLat([longitude, latitude])
         .addTo(map); 
     });
 })
 }
 
-let interval = 4000;
-setInterval( updateMap, interval);  
+updateMap();
