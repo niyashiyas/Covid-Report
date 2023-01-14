@@ -1,2 +1,5 @@
+Covid-Report shows the visualization of Covid statistics represented using Mapbox API
+
 Deployment Link:- <br>
-https://niyashiyas.github.io/Covid-Report/
+https://covid-statistics-report.netlify.app/
+
